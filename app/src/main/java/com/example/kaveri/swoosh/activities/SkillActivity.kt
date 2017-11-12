@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.kaveri.swoosh.EXTRA_LEAGUE_TYPE
-import com.example.kaveri.swoosh.EXTRA_SKILL
+import com.example.kaveri.swoosh.EXTRA_PLAYER
 import com.example.kaveri.swoosh.R
+import com.example.kaveri.swoosh.model.Player
 import kotlinx.android.synthetic.main.activity_skill.*
 
 class SkillActivity : BaseActivity() {
 
-    var selectedLeague: String = ""
-    var skill: String = ""
+    lateinit var player : Player
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill)
@@ -20,15 +19,14 @@ class SkillActivity : BaseActivity() {
     }
 
     private fun initialize() {
-        selectedLeague = intent.extras.get(EXTRA_LEAGUE_TYPE) as String
-        Toast.makeText(this,selectedLeague,Toast.LENGTH_SHORT).show()
+        player = intent.getParcelableExtra(EXTRA_PLAYER)
+        Toast.makeText(this,player.league,Toast.LENGTH_SHORT).show()
     }
 
     fun onFinishClick(view: View) {
-        if(skill != "") {
+        if(player.skill != "") {
             val intent = Intent(this, FinishActivity::class.java)
-            intent.putExtra(EXTRA_LEAGUE_TYPE, selectedLeague)
-            intent.putExtra(EXTRA_SKILL, skill)
+            intent.putExtra(EXTRA_PLAYER, player)
             startActivity(intent)
         } else {
             Toast.makeText(this, "select a skill", Toast.LENGTH_SHORT).show()
@@ -38,14 +36,14 @@ class SkillActivity : BaseActivity() {
     fun beginnerClick(view:View) {
         if(beginnerBtn.isChecked) {
             ballerBtn.isChecked = false
-            skill = getString(R.string.beginner)
+            player.skill = getString(R.string.beginner)
         }
     }
 
     fun ballerClick(view:View) {
         if(ballerBtn.isChecked) {
             beginnerBtn.isChecked = false
-            skill = getString(R.string.baller)
+            player.skill = getString(R.string.baller)
         }
     }
 }

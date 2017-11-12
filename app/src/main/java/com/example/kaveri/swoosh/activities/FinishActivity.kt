@@ -2,9 +2,9 @@ package com.example.kaveri.swoosh.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kaveri.swoosh.EXTRA_LEAGUE_TYPE
-import com.example.kaveri.swoosh.EXTRA_SKILL
+import com.example.kaveri.swoosh.EXTRA_PLAYER
 import com.example.kaveri.swoosh.R
+import com.example.kaveri.swoosh.model.Player
 import kotlinx.android.synthetic.main.activity_finish.*
 
 class FinishActivity : AppCompatActivity() {
@@ -16,8 +16,7 @@ class FinishActivity : AppCompatActivity() {
     }
 
     fun initialize() {
-    val league = intent.extras.get(EXTRA_LEAGUE_TYPE)
-        var skill = intent.extras.get(EXTRA_SKILL)
-        searchLeaguesText.text = "Looking for $league $skill around you..."
+    val player:Player = intent.getParcelableExtra(EXTRA_PLAYER)
+        searchLeaguesText.text = "Looking for ${player.league} ${player.skill} around you..."
     }
 }
