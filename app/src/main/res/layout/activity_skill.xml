@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kaveri.swoosh.SkillActivity">
+    tools:context="com.example.kaveri.swoosh.activities.SkillActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -63,20 +63,22 @@
 
         <ToggleButton
             android:layout_weight="1"
-            android:id="@+id/toggleButton7"
+            android:id="@+id/beginnerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:background="@drawable/swoosh_toggle"
             android:text="ToggleButton"
             android:textOff="@string/beginner"
+            android:onClick="beginnerClick"
             android:textOn="@string/beginner" />
 
         <ToggleButton
             android:layout_weight="1"
-            android:id="@+id/toggleButton8"
+            android:id="@+id/ballerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="ballerClick"
             android:background="@drawable/swoosh_toggle"
             android:text="ToggleButton"
             android:textOff="@string/baller"
@@ -96,6 +98,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="onFinishClick"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

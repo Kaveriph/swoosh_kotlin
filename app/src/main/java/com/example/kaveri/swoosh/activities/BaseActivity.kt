@@ -1,12 +1,11 @@
-package com.example.kaveri.swoosh
+package com.example.kaveri.swoosh.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class SkillActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_skill)
     }
 }
