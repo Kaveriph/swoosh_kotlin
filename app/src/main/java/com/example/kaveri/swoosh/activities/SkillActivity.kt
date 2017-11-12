@@ -23,6 +23,17 @@ class SkillActivity : BaseActivity() {
         Toast.makeText(this,player.league,Toast.LENGTH_SHORT).show()
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(EXTRA_PLAYER,player)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if(savedInstanceState != null) {
+            player = savedInstanceState.getParcelable(EXTRA_PLAYER)
+        }
+    }
     fun onFinishClick(view: View) {
         if(player.skill != "") {
             val intent = Intent(this, FinishActivity::class.java)
